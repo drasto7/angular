@@ -1,0 +1,80 @@
+<div class="container">
+
+  <div class="well well-sm">
+    <h3>Claim Search And Detail</h3>
+  </div>
+
+  <div class="row">
+    <form (ngSubmit)="onSubmit()" #f="ngForm">
+      <div class="col-md-6">
+        <div class="form-group row">
+          <div class="col-xs-3">
+            <label for="claimSearchBy">Search By:</label>
+          </div>
+          <div class="col-xs-6">
+            <select class="form-control" id="claimSearchBy" name="claimSearchBy" [(ngModel)]="selected">
+              <option *ngFor="let searchOption of searchOptions">{{searchOption}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="container" id="claimNumber" *ngIf="selected === 'Claim Number'">
+          <div class="form-group row">
+            <div class="col-xs-3">
+              <label for="claimNumber">Claim Number :</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control cold-md-8" id="claimNumber" 
+              placeholder="Claim Number" ngModel 
+              name ="claimNumber" required #claimNumber= "ngModel">
+            </div>
+          </div>
+          <span class="help-block" *ngIf = "!claimNumber.valid && claimNumber.touched">Please enter a valid claim Number</span>
+
+        </div>
+        
+
+        <div class="container" id="authNumber" *ngIf="selected === 'Authorisation Number'">
+          <div class="form-group row">
+            <div class="col-xs-3">
+              <label for="authNumber">Authorisation Number :</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control cold-md-8" 
+              name="authNumber"id="authNumber" placeholder="Autorisation Number"
+                required ngModel #authNumber="ngModel">
+            </div>
+          </div>
+          <span class="help-block" *ngIf = "!authNumber.valid && authNumber.touched">Please enter a 
+            valid Authorisation Number</span>
+
+        </div>
+
+        <div class="container" id="subject" *ngIf="selected === 'Subject'">
+          <div class="form-group row">
+            <div class="col-xs-3">
+              <label for="subject">Subject Name :</label>
+            </div>
+            <div class="col-xs-3">
+              <input type="text" class="form-control cold-md-8" 
+              name="subject" id="subject" placeholder="Subject" required ngModel #subject="ngModel"> 
+            </div>
+          </div>
+          <span class="help-block" *ngIf = "!subject.valid && subject.touched">Please enter a 
+              valid Subject</span>
+  
+        </div>
+
+      </div>
+      <div class="contaier text-center"> <button type="submit" class="btn btn-primary btn-lg"
+        [disabled] = "!f.valid">Submit</button></div>
+
+    </form>
+  </div>
+
+  <app-claim-result></app-claim-result>
+  <app-claim-detail></app-claim-detail>
+</div>
