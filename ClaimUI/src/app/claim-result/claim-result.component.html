@@ -9,29 +9,16 @@
     <thead>
       <tr>
         <th>Claim Number</th>
-        <th>Service Dates</th>
         <th>Status</th>
         <th>Claim Amount</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1234</td>
-        <td>dates</td>
-        <td>paid</td>
-        <td>34$</td>
-      </tr>
-      <tr>
-        <td>1234</td>
-        <td>12/22/2018</td>
-        <td>paid</td>
-        <td>34$</td>
-      </tr>
-      <tr>
-        <td>2345</td>
-        <td>12/22/2018</td>
-        <td>paid</td>
-        <td>34$</td>
+      <tr *ngFor="let claimItem of claimItems" (click)="onRowClick(claimItem)"
+      >
+        <td>{{ claimItem.claimNumber }}</td>
+        <td>{{ claimItem.status }}</td>
+        <td>{{ claimItem.claimAmount }}</td>
       </tr>
     </tbody>
   </table>

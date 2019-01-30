@@ -7,7 +7,9 @@ import { ClaimResultComponent } from './claim-result/claim-result.component';
 import { ClaimResultItemComponent } from './claim-result/claim-result-item/claim-result-item.component';
 import { ClaimDetailComponent } from './claim-detail/claim-detail.component';
 import {DropdownDirective} from './shared/dropdown.directive';
-import {Routes,RouterModule} from '@angular/router';
+import {Routes, RouterModule} from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { ClaimHttpService } from './shared/claimHttpService.service';
 
 @NgModule({
   declarations: [
@@ -20,8 +22,9 @@ import {Routes,RouterModule} from '@angular/router';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ClaimHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
