@@ -23,7 +23,19 @@ constructor(private claimHttpService: ClaimHttpService ) {}
 
 onSubmit() {
   console.log(this.form.value.claimNumber);
-  this.claimHttpService.getClaimsByClaimNumber(this.form.value.claimNumber) ;
 
+  if (this.selected === 'Claim Number') {
+
+    this.claimHttpService.getClaimsByClaimNumber(this.form.value.claimNumber) ;
+
+  } else if (this.selected === 'Authorisation Number') {
+
+    this.claimHttpService.getClaimsByAuthNumber(this.form.value.authNumber) ;
+
+  } else if (this.selected === 'Subject') {
+
+    this.claimHttpService.getClaimsBySubject(this.form.value.subject) ;
+  }
 }
+
 }

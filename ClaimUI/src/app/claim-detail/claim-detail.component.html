@@ -1,3 +1,40 @@
-<p>
-  claim-detail works!
-</p>
+<h2>Claim Detail</h2>
+<div class="container" *ngIf= "claimDetail">
+
+  <div  class ="row" style="margin-top: 20px">
+    <div class= "col-xs-4">
+      <label for="claimNumber">Claim Number: </label>
+      {{ claimDetail.claimNumber }}
+    </div>
+    <div class= "col-xs-4">
+      <label for="claimNumber">Claim Status: </label>
+      {{ claimDetail.claimStatus }}
+    </div>
+    <div class= "col-xs-4">
+      <label for="claimNumber">Claim Amount: </label>
+      {{ claimDetail.claimAmount }}
+    </div>
+  </div>
+
+  <div class ="row" style="margin-top: 20px">
+    <div class= "col-xs-4">
+      <label for="claimNumber">Claim Authorization Number : </label>
+      {{ claimDetail.authNumber }}
+    </div>
+    <div class= "col-xs-4">
+      <label for="claimNumber">Service Start Date : </label>{{ claimDetail.claimStartDate }}
+    </div>
+    <div class= "col-xs-4">
+      <label for="claimNumber">Service End Date: </label>
+      {{ claimDetail.claimEndDate }}
+    </div>
+  </div>
+
+  <div class ="row" style="margin-top: 20px">
+    <div class= "col-xs-4">
+      <label for="claimNumber">Subject Number : </label>
+      {{ claimDetail.subjectId }}
+    </div>
+    </div>
+
+</div>

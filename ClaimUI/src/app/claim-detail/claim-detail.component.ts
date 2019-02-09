@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClaimService } from '../shared/ClaimService.service';
+import { ClaimResultItem } from '../claim-result/claim-result-item.model';
 
 @Component({
   selector: 'app-claim-detail',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClaimDetailComponent implements OnInit {
 
-  constructor() { }
+  claimDetail: ClaimResultItem;
+  constructor(private claimService: ClaimService) { }
 
   ngOnInit() {
+    this.claimService.claimDetailSet.subscribe(
+    (claimDetailItem: ClaimResultItem ) => this.claimDetail = claimDetailItem
+    );
   }
 
 }

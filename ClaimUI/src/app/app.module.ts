@@ -4,18 +4,17 @@ import {FormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ClaimResultComponent } from './claim-result/claim-result.component';
-import { ClaimResultItemComponent } from './claim-result/claim-result-item/claim-result-item.component';
 import { ClaimDetailComponent } from './claim-detail/claim-detail.component';
 import {DropdownDirective} from './shared/dropdown.directive';
 import {Routes, RouterModule} from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ClaimHttpService } from './shared/claimHttpService.service';
+import {ClaimService} from './shared/ClaimService.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClaimResultComponent,
-    ClaimResultItemComponent,
     ClaimDetailComponent,
     DropdownDirective
   ],
@@ -24,7 +23,7 @@ import { ClaimHttpService } from './shared/claimHttpService.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ClaimHttpService],
+  providers: [ClaimHttpService, ClaimService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

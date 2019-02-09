@@ -2,9 +2,7 @@
 
 <div class="container">
   <h2>Claim Result</h2>
-  <p>
-  <app-claim-result-item></app-claim-result-item>
-</p>
+
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
@@ -14,12 +12,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let claimItem of claimItems" (click)="onRowClick(claimItem)"
-      >
+      <tr [ngClass] = "{info: selectedClaimNumber === claimItem.claimNumber}" 
+      *ngFor="let claimItem of claimItems" (click)="onRowClick(claimItem)"> 
         <td>{{ claimItem.claimNumber }}</td>
-        <td>{{ claimItem.status }}</td>
+        <td>{{ claimItem.claimStatus }}</td>
         <td>{{ claimItem.claimAmount }}</td>
       </tr>
+    
     </tbody>
   </table>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClaimResultItem } from './claim-result-item.model';
+import { ClaimService } from '../shared/ClaimService.service';
+import { ClaimHttpService } from '../shared/claimHttpService.service';
 
 @Component({
   selector: 'app-claim-result',
@@ -9,20 +11,23 @@ import { ClaimResultItem } from './claim-result-item.model';
 export class ClaimResultComponent implements OnInit {
 
   selectedClaimNumber: string;
-  claimItems: ClaimResultItem[] = [
-
-   // new ClaimResultItem('2345' , 'paid', '230.00' ),
-    // new ClaimResultItem('3122' , 'paid', '220.00' )
-
-  ];
-
-  constructor() { }
+  claimItems: ClaimResultItem[];
+  constructor(private claimService: ClaimService, private claimhttpService: ClaimHttpService) { }
 
   ngOnInit() {
+    this.claimService.claimResultSet.subscribe(
+      (claimList) => {
+        console.log(this.claimService.getClaimList());
+        this.claimItems = this.claimService.getClaimList();
+        this.selectedClaimNumber = '' ;
+      }
+    );
   }
 
   onRowClick(claimItem: ClaimResultItem) {
-    console.log('selected Claim : ' + claimItem.claimNumber );
+    console.log('selected Claim : ' + claimItem.claimNumber);
     this.selectedClaimNumber = claimItem.claimNumber;
+    this.claimhttpService.getClaimDetail(claimItem.claimNumber);
+
   }
 }
